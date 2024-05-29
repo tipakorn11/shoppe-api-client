@@ -1,8 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 
 export default function TheHeader() {
+  const [state, setState] = useState({
+    dropdownSearch: "",
+    dropdownitem: ["ปากกา", "พนักพิง", "เสื้อกล้าม", "คีย์บอร์ด", "RK", "เมาส์ไร้สาย", "mouse glorius"],
+  })
+
   return (
-    <div className="bg-gradient-to-b from-[#f53d2d] to-[#f63]">
+    <div className="bg-gradient-to-b from-[#f53d2d] to-[#f63] 2xl:px-[20rem]">
       <div className="flex-column sm:flex justify-between pt-2 text-white text-sm">
         <div className="flex divide-x-2 *:px-2 divide-slate-100/25 ">
           <div>Seller Center</div>
@@ -32,34 +37,37 @@ export default function TheHeader() {
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex items-center px-6">
         <img src="/image/shopee-logo-white.png" alt="" width={162} height={50} />
-        <div className="group relative cursor-pointer m-auto w-full px-6">
-          <div className="flex items-center justify-between space-x-5 bg-white px-4 rounded-sm h-10">
-            <input className="menu-hover  font-medium text-slate-500/80  text-sm lg:mx-4 outline-none" placeholder="หมา"></input>
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
-            </span>
+        <div className="group  relative cursor-pointer m-0 w-full px-4 ">
+          <div className="md:flex hidden  items-center justify-between space-x-5 bg-white p-[0.2rem] rounded-sm h-10">
+            <input className="menu-hover  font-medium text-slate-500/80  text-sm lg:mx-4 outline-none" placeholder="ค้นหาในแคมเปญ"></input>
+            <div className="h-[2.3rem]">
+              <div className="flex justify-center items-center  bg-[#fb5533] rounded-sm  active:bg-violet-700 h-full text-center w-14">
+                <i className="pi pi-search"></i>{" "}
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center  md:hidden">
+            <i className=" text-white pi pi-search"></i>
           </div>
 
           <div className="invisible absolute z-50 flex w-full flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
-            <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">Sunday</a>
-
-            <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">Monday</a>
-
-            <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">Tuesday</a>
-
-            <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">Wednesday</a>
-
-            <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">Thursday</a>
-
-            <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">Friday</a>
-
-            <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">Saturday</a>
+            {state.dropdownitem.map((item, idx) => (
+              <a key={idx} className="my-2 block border-b py-1  text-gray-500 hover:text-black hover:bg-gray-800/10 md:mx-2">
+                {item}
+              </a>
+            ))}
           </div>
         </div>
+        <i className=" pi pi-shopping-cart text-white text-2xl"></i>
+      </div>
+      <div className="justify-center hidden md:flex *:px-2">
+        {state.dropdownitem?.map((item, idx) => (
+          <label key={idx} className="text-white texet-sm cursor-pointer hover:text-slate-200">
+            {item}
+          </label>
+        ))}
       </div>
     </div>
   )
