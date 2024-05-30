@@ -5,7 +5,6 @@ export default function TheHeader() {
     dropdownSearch: "",
     dropdownitem: ["ปากกา", "พนักพิง", "เสื้อกล้าม", "คีย์บอร์ด", "RK", "เมาส์ไร้สาย", "mouse glorius"],
   })
-
   return (
     <div className="bg-gradient-to-b from-[#f53d2d] to-[#f63] 2xl:px-[20rem]">
       <div className="flex-column sm:flex justify-between pt-2 text-white text-sm">
